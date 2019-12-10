@@ -8,6 +8,7 @@ import { numbers, operator, specials } from './data';
 
 // Logo has already been provided for you. Do the same for the remaining components
 import Logo from "./components/DisplayComponents/Logo";
+import NumberButton from "./components/ButtonComponents/NumberButtons/NumberButton";
 
 // const [numberState, setNumberState] = useState(numbers);
 
@@ -25,6 +26,7 @@ function App() {
       
       <div className="App">
         {/* STEP 4 - Render your components here and be sure to properly import/export all files */}
+        <NumberButton/>
       </div>
     </div>
   );
