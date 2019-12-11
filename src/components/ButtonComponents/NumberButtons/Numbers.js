@@ -12,13 +12,6 @@ const Numbers = (props) => {
   // STEP 2 - add the imported data to state
 const {updateFunction,buttonDivsStyle, buttonStyle} = props
 
-    // props.numbuttons = numbers.map((number) => 
-    // <button> {number} </button>
-    //  );
-    // function HandleOnClick(event){
-    //   return handle(console.log(event.number))
-    // }
-  
   return (
     <div style = {buttonDivsStyle}>      
       {/* STEP 3 - Use .map() to iterate over your array data and return a button

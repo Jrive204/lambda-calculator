@@ -23,7 +23,31 @@ function App() {
   // the "5" button, or the operator if they click one of those buttons) and then call your setter function to update state.
   // Don't forget to pass the functions (and any additional data needed) to the components as props
   // const [numberState, setNumberState] = useState(numbers);
-  const [display, setDisplay] = useState(0);
+  const [display, setDisplay] = useState(``);
+
+const updateFunction = e => {
+    if (e.target.value === "C") {
+      setDisplay(``);
+    } else if (display === `0`) {
+      setDisplay(e.target.value);
+    } else if (display !== `0`) {
+      setDisplay(`${display}${e.target.value}`);
+    }
+    if (e.target.value === `+/-`){
+      setDisplay(`-${display}`)
+      
+      if(display === `-${display}`){
+        setDisplay(`+ ${display}`)
+
+      }
+    }
+  };
+
+
+  const appstyle = {
+    display: `flex`,
+    flexWrap: `wrap`,
+  }
 
   const displayStyle = {
     marginLeft: `4%`,
@@ -35,7 +59,7 @@ function App() {
   }
 
   const divstyle = {
-    height: '80vh',
+    height: '88vh',
 
   }
 
@@ -43,7 +67,11 @@ function App() {
     width: `18%`,
     margin: `10px`,
     height: `10vh`,
-    marginRight: `5%`
+    marginRight: `5%`,
+    borderRadius: `50%`,
+    fontSize: `2.5rem`,
+    backgroundColor: `blue`,
+    color: `white`,
   }
 
   const buttonDivsStyleOp = {
@@ -58,13 +86,24 @@ function App() {
     
 
   }
+  const buttonStyleSp = {
+    width: `18%`,
+    margin: `10px`,
+    height: `10vh`,
+    marginRight: `5%`,
+    borderRadius: `50%`,
+  }
 
   const buttonStyleOp = {
     
-    width: `10%`,
+    width: `13%`,
     margin: `10px`,
     height: `10vh`,
-    marginRight: `5%`
+    marginRight: `5%`,
+    borderRadius: `50%`,
+    fontSize: `2.5rem`,
+    backgroundColor: `skyblue`,
+    color: `white`,
   }
 
   const buttonDivsStyle = {
@@ -78,22 +117,21 @@ function App() {
     paddingTop: `3%`,
 
   }
+
+  const buttonDivsStyleSP = {
+   
+    height: `8vh`,
+    display: `flex`,
+    flexWrap: `wrap`,
+    width: `100%`,
+    padding: `2%`,
+    paddingTop: `2%`,
+
+  }
+  
   
 
-  const updateFunction = e => {
-    if (e.target.value === "C") {
-      setDisplay(0);
-    } else if (display === 0) {
-      setDisplay(e.target.value);
-    } else if (display !== 0) {
-      setDisplay(`${display}${e.target.value}`);
-    }
-    if (e.target.value === `+/=`){
-      if(display !== 0){
-
-      }
-    }
-  };
+  
 
   
 
@@ -102,15 +140,15 @@ function App() {
   return (
     <div style={divstyle} className="container">
       <Logo logostyle = {logostyle} />
-      <Display displayStyle = {displayStyle}>
+      <Display display = {display} displayStyle = {displayStyle}>
         {display}
 
         </Display>
       
-      <div className="App">
+      <div style = {appstyle} className="App">
         {/* STEP 4 - Render your components here and be sure to properly import/export all files */}
-        <SpecialButton updateFunction = {e => updateFunction(e)}/>
-        <OperatorButton updateFunction = {e => updateFunction(e)} buttonDivsStyle = {buttonDivsStyleOp} buttonStyle = {buttonStyleOp}/>
+        <SpecialButton updateFunction = {e => updateFunction(e)} buttonStyleSp = {buttonStyle} buttonDivsStyle = {buttonDivsStyle}/>
+        <OperatorButton updateFunction = {e => updateFunction(e)} buttonDivsStyle = {buttonDivsStyle} buttonStyle = {buttonStyleOp}/>
         <NumberButton updateFunction ={e => updateFunction(e)} buttonDivsStyle = {buttonDivsStyle} buttonStyle = {buttonStyle}/>
       </div>
     </div>
