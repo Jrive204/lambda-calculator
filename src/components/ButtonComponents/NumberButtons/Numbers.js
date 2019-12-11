@@ -25,9 +25,7 @@ const {updateFunction} = props
        component matching the name on the provided file. Pass
        it any props needed by the child component*/}
 
-
-
-       {numbers.map((number) => {
+      {numbers.map((number) => {
       return <button onClick = {updateFunction} key = {number} value = {number} > {number} </button> 
        })};
 

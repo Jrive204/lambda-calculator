@@ -5,3 +5,4 @@ const Display = ({children}) => {
 };
 
 export default Display
+
