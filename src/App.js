@@ -1,4 +1,4 @@
-import React, { useState }from "react";
+import React, { useState, useEffect }from "react";
 import "./App.css";
 import Numbers from './components/ButtonComponents/NumberButtons/Numbers'
 import { numbers, operator, specials } from './data';
@@ -11,8 +11,8 @@ import Logo from "./components/DisplayComponents/Logo";
 import NumberButton from "./components/ButtonComponents/NumberButtons/NumberButton";
 import OperatorButton from "./components/ButtonComponents/OperatorButtons/OperatorButton";
 import SpecialButton from "./components/ButtonComponents/SpecialButtons/SpecialButton";
+import Display from "./components/DisplayComponents/Display";
 
-// const [numberState, setNumberState] = useState(numbers);
 
 
 function App() {
@@ -21,16 +21,56 @@ function App() {
   // Your functions should accept a parameter of the the item data being displayed to the DOM (ie - should recieve 5 if the user clicks on
   // the "5" button, or the operator if they click one of those buttons) and then call your setter function to update state.
   // Don't forget to pass the functions (and any additional data needed) to the components as props
+  // const [numberState, setNumberState] = useState(numbers);
+  const [display, setDisplay] = useState(0);
 
+
+  const updateFunction = e => {
+    if (e.target.value === "C") {
+      setDisplay(0);
+    } else if (display === 0) {
+      setDisplay(e.target.value);
+    } else if (display !== 0) {
+      setDisplay(`${display}${e.target.value}`);
+    }
+    if (e.target.value === `+/=`){
+      if(display !== 0){
+
+      }
+    }
+  };
+
+
+  
+
+
+    // if (number === `C`) {
+    //         setDisplay(0)
+
+    // }
+    // } else {
+    // setDisplay(e.target.value)
+    // }
+    
+  
+  
+  
+
+  // const add = () => setNumberState(numberState + 1)
+  
   return (
     <div className="container">
       <Logo />
+      <Display>
+        {display}
+
+        </Display>
       
       <div className="App">
         {/* STEP 4 - Render your components here and be sure to properly import/export all files */}
-        <NumberButton/>
-        <OperatorButton/>
-        <SpecialButton/>
+        <NumberButton updateFunction ={e => updateFunction(e)} />
+        <OperatorButton updateFunction = {e => updateFunction(e)}/>
+        <SpecialButton updateFunction = {e => updateFunction(e)}/>
       </div>
     </div>
   );
