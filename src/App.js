@@ -25,6 +25,60 @@ function App() {
   // const [numberState, setNumberState] = useState(numbers);
   const [display, setDisplay] = useState(0);
 
+  const displayStyle = {
+    marginLeft: `4%`,
+  }
+
+  const logostyle = {
+    paddingTop : `5%`,
+    paddingLeft: `5%`
+  }
+
+  const divstyle = {
+    height: '80vh',
+
+  }
+
+  const buttonStyle = {
+    width: `18%`,
+    margin: `10px`,
+    height: `10vh`,
+    marginRight: `5%`
+  }
+
+  const buttonDivsStyleOp = {
+    justifyContent: `space-around`,
+    height: `10vh`,
+    display: `flex`,
+    flexWrap: `wrap`,
+    width: `100%`,
+    padding: `2%`,
+    paddingTop: `3%`,
+    flexDirection:`column`,
+    
+
+  }
+
+  const buttonStyleOp = {
+    
+    width: `10%`,
+    margin: `10px`,
+    height: `10vh`,
+    marginRight: `5%`
+  }
+
+  const buttonDivsStyle = {
+   
+    justifyContent: `space-around`,
+    height: `10vh`,
+    display: `flex`,
+    flexWrap: `wrap`,
+    width: `100%`,
+    padding: `2%`,
+    paddingTop: `3%`,
+
+  }
+  
 
   const updateFunction = e => {
     if (e.target.value === "C") {
@@ -41,37 +95,23 @@ function App() {
     }
   };
 
-
   
 
 
-    // if (number === `C`) {
-    //         setDisplay(0)
-
-    // }
-    // } else {
-    // setDisplay(e.target.value)
-    // }
-    
-  
-  
-  
-
-  // const add = () => setNumberState(numberState + 1)
   
   return (
-    <div className="container">
-      <Logo />
-      <Display>
+    <div style={divstyle} className="container">
+      <Logo logostyle = {logostyle} />
+      <Display displayStyle = {displayStyle}>
         {display}
 
         </Display>
       
       <div className="App">
         {/* STEP 4 - Render your components here and be sure to properly import/export all files */}
-        <NumberButton updateFunction ={e => updateFunction(e)} />
-        <OperatorButton updateFunction = {e => updateFunction(e)}/>
         <SpecialButton updateFunction = {e => updateFunction(e)}/>
+        <OperatorButton updateFunction = {e => updateFunction(e)} buttonDivsStyle = {buttonDivsStyleOp} buttonStyle = {buttonStyleOp}/>
+        <NumberButton updateFunction ={e => updateFunction(e)} buttonDivsStyle = {buttonDivsStyle} buttonStyle = {buttonStyle}/>
       </div>
     </div>
   );
